@@ -1,5 +1,3 @@
-// author Peter Lowe
-
 #include "Game.h"
 #include <iostream>
 
@@ -11,6 +9,7 @@ Game::Game() :
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
+	
 }
 
 
@@ -57,6 +56,7 @@ void Game::processEvents()
 			{
 				m_exitGame = true;
 			}
+
 		}
 	}
 }
@@ -78,9 +78,13 @@ void Game::update(sf::Time t_deltaTime)
 /// </summary>
 void Game::render()
 {
-	m_window.clear(sf::Color::White);
-	m_window.draw(m_welcomeMessage);
-	m_window.draw(m_logoSprite);
+	Bolt ball(5.0f, sf::Vector2f(400.f, 200.0f), sf::Vector2f(0.0f, 0.0f));
+	Paddle paddle;
+
+	m_window.clear();
+	m_window.draw(ball.m_ball);
+	m_window.draw(paddle.m_body);
+	//m_window.draw(m_logoSprite);
 	m_window.display();
 }
 
@@ -93,14 +97,14 @@ void Game::setupFontAndText()
 	{
 		std::cout << "problem loading arial black font" << std::endl;
 	}
-	m_welcomeMessage.setFont(m_ArialBlackfont);
-	m_welcomeMessage.setString("SFML Game");
-	m_welcomeMessage.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
-	m_welcomeMessage.setPosition(40.0f, 40.0f);
-	m_welcomeMessage.setCharacterSize(80);
-	m_welcomeMessage.setOutlineColor(sf::Color::Red);
-	m_welcomeMessage.setFillColor(sf::Color::Black);
-	m_welcomeMessage.setOutlineThickness(3.0f);
+	m_text.setFont(m_ArialBlackfont);
+	m_text.setString("SFML Game");
+	m_text.setStyle(sf::Text::Underlined | sf::Text::Italic | sf::Text::Bold);
+	m_text.setPosition(40.0f, 40.0f);
+	m_text.setCharacterSize(80);
+	m_text.setOutlineColor(sf::Color::Red);
+	m_text.setFillColor(sf::Color::Black);
+	m_text.setOutlineThickness(3.0f);
 
 }
 
@@ -109,11 +113,11 @@ void Game::setupFontAndText()
 /// </summary>
 void Game::setupSprite()
 {
-	if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
-	{
-		// simple error message if previous call fails
-		std::cout << "problem loading logo" << std::endl;
-	}
-	m_logoSprite.setTexture(m_logoTexture);
-	m_logoSprite.setPosition(300.0f, 180.0f);
+	//if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
+	//{
+	//	// simple error message if previous call fails
+	//	std::cout << "problem loading logo" << std::endl;
+	//}
+	//m_logoSprite.setTexture(m_logoTexture);
+	//m_logoSprite.setPosition(300.0f, 180.0f);
 }
