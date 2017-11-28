@@ -5,7 +5,8 @@
 
 Game::Game() :
 	m_window{ sf::VideoMode{ 800, 600, 32 }, "SFML Game" },
-	m_exitGame{false} //when true game will exit
+	m_exitGame{ false }, //when true game will exit
+	m_bolt(5.0f, sf::Vector2f(400.f, 200.0f), sf::Vector2f(0.0f, 0.0f))
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
@@ -78,12 +79,9 @@ void Game::update(sf::Time t_deltaTime)
 /// </summary>
 void Game::render()
 {
-	Bolt ball(5.0f, sf::Vector2f(400.f, 200.0f), sf::Vector2f(0.0f, 0.0f));
-	Paddle paddle;
-
 	m_window.clear();
-	m_window.draw(ball.m_ball);
-	m_window.draw(paddle.m_body);
+	m_window.draw(m_bolt.m_ball);
+	m_window.draw(m_paddle.m_body);
 	//m_window.draw(m_logoSprite);
 	m_window.display();
 }

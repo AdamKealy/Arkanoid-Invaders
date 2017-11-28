@@ -2,7 +2,7 @@
 
 
 Paddle::Paddle() :
-	m_position(420.f,400.f),
+	m_position(400.f,400.f),
 	m_speed(0.0f,0.0f),
 	m_width(100.f)
 {

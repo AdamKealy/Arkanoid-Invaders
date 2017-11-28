@@ -13,7 +13,8 @@ public:
 	/// main method for game
 	/// </summary>
 	void run();
-
+	Paddle m_paddle;
+	Bolt m_bolt;
 private:
 
 	void processEvents();
@@ -22,7 +23,6 @@ private:
 	
 	void setupFontAndText();
 	void setupSprite();
-	void setupObjects();
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
