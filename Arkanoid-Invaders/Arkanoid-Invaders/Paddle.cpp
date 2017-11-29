@@ -2,7 +2,7 @@
 
 
 Paddle::Paddle() :
-	m_position(400.f,400.f),
+	m_position(355.f,750.f),
 	m_speed(0.0f,0.0f),
 	m_width(100.f)
 {
@@ -24,4 +24,14 @@ float Paddle::getWidth() const
 sf::Vector2f Paddle::getSpeed()
 {
 	return m_speed;
+}
+
+sf::Vector2f Paddle::setPosition()
+{
+	return  m_position;
+}
+
+sf::Vector2f Paddle::getPosition() const
+{
+	return m_position;
 }

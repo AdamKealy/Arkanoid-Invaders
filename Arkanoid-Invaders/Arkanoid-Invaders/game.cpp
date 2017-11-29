@@ -4,9 +4,9 @@
 
 
 Game::Game() :
-	m_window{ sf::VideoMode{ 800, 600, 32 }, "SFML Game" },
+	m_window{ sf::VideoMode{ 800, 800, 32 }, "SFML Game" },
 	m_exitGame{ false }, //when true game will exit
-	m_bolt(5.0f, sf::Vector2f(400.f, 200.0f), sf::Vector2f(0.0f, 0.0f))
+	m_bolt(5.0f, sf::Vector2f(500.f, 500.0f), sf::Vector2f(0.0f, 0.0f))
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
@@ -57,7 +57,10 @@ void Game::processEvents()
 			{
 				m_exitGame = true;
 			}
-
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+			{
+				//m_paddle.m_body.setPosition(m_paddle.);
+			}
 		}
 	}
 }

@@ -12,6 +12,8 @@ public:
 //	float setWidth(); //Power Ups later on
 	sf::Vector2f getSpeed();
 //	float setSpeed(); //Power Ups later on
+	sf::Vector2f setPosition();
+	sf::Vector2f getPosition()const;
 
 private:
 	sf::Vector2f m_position;
