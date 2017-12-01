@@ -20,21 +20,12 @@ Game::~Game()
 
 
 void Game::run()
-{
-	sf::Clock clock;
-	sf::Time timeSinceLastUpdate = sf::Time::Zero;
-	sf::Time timePerFrame = sf::seconds(1.f / 60.f); // 60 fps
+{	
+	sf::Event event;
 	while (m_window.isOpen())
 	{
-		processEvents(); // as many as possible
-		timeSinceLastUpdate += clock.restart();
-		while (timeSinceLastUpdate > timePerFrame)
-		{
-			timeSinceLastUpdate -= timePerFrame;
-			processEvents(); // at least 60 fps
-			update(timePerFrame); //60 fps
-		}
-		render(); // as many as possible
+		processEvents(event);
+		render();
 	}
 }
 /// <summary>
@@ -42,26 +33,27 @@ void Game::run()
 /// get key presses/ mouse moves etc. from OS
 /// and user :: Don't do game update here
 /// </summary>
-void Game::processEvents()
+void Game::processEvents(sf::Event& event)
 {
-	sf::Event event;
-	while (m_window.pollEvent(event))
+	switch (event.type)
 	{
-		if ( sf::Event::Closed == event.type) // window message
-		{
-			m_window.close();
-		}
-		if (sf::Event::KeyPressed == event.type) //user key press
-		{
-			if (sf::Keyboard::Escape == event.key.code)
-			{
-				m_exitGame = true;
-			}
-			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-			{
-				//m_paddle.m_body.setPosition(m_paddle.);
-			}
-		}
+	case sf::Event::KeyPressed:
+		m_keyHandler.updateKey(event.key.code, true);
+		break;
+	case sf::Event::KeyReleased:
+		m_keyHandler.updateKey(event.key.code, false);
+		break;
+	default:
+		break;
+	}
+
+	switch (event.key.code)
+	{
+	case sf::Keyboard::Escape:
+		m_window.close();
+		break;
+	default:
+		break;
 	}
 }
 
@@ -69,12 +61,13 @@ void Game::processEvents()
 /// Update the game world
 /// </summary>
 /// <param name="t_deltaTime">time interval per frame</param>
-void Game::update(sf::Time t_deltaTime)
+void Game::update(double dt)
 {
 	if (m_exitGame)
 	{
 		m_window.close();
 	}
+	m_paddle.update(dt);
 }
 
 /// <summary>

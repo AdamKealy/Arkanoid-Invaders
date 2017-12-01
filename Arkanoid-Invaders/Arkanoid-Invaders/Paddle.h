@@ -9,11 +9,10 @@ public:
 	sf::RectangleShape m_body;
 	float getHeight() const;
 	float getWidth() const;
-//	float setWidth(); //Power Ups later on
-	sf::Vector2f getSpeed();
-//	float setSpeed(); //Power Ups later on
-	sf::Vector2f setPosition();
-	sf::Vector2f getPosition()const;
+	void moveL();
+	void moveR();
+	//void setPosition(sf::Vector2f const & pos);
+	void update(double dt);
 
 private:
 	sf::Vector2f m_position;

@@ -3,24 +3,22 @@
 #define GAME
 #include "Bolt.h"
 #include "Paddle.h"
+#include "KeyHandler.h"
 
 class Game
 {
 public:
 	Game();
 	~Game();
-	/// <summary>
-	/// main method for game
-	/// </summary>
 	void run();
 	Paddle m_paddle;
 	Bolt m_bolt;
+	KeyHandler m_keyHandler;
 private:
 
-	void processEvents();
-	void update(sf::Time t_deltaTime);
+	void processEvents(sf::Event&);
+	void update(double dt);
 	void render();
-	
 	void setupFontAndText();
 	void setupSprite();
 

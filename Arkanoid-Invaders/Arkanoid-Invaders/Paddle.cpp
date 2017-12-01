@@ -21,17 +21,23 @@ float Paddle::getWidth() const
 	return m_width;
 }
 
-sf::Vector2f Paddle::getSpeed()
+void Paddle::moveL()
 {
-	return m_speed;
+	if (m_position.x != 0)
+	{
+		m_position -= m_speed;
+	}
 }
 
-sf::Vector2f Paddle::setPosition()
+void Paddle::moveR()
 {
-	return  m_position;
+	if (m_position.x != 800 - getWidth())
+	{
+		m_position += m_speed;
+	}
 }
 
-sf::Vector2f Paddle::getPosition() const
+void Paddle::update(double dt)
 {
-	return m_position;
+	m_body.setPosition(m_position);
 }
