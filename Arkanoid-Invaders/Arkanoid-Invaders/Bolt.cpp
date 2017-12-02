@@ -1,33 +1,29 @@
 #include "Bolt.h"
 
-Bolt::Bolt() :
-	m_alive(true),
-	m_position(0.0f, 0.0f),
-	m_speed(0.0f, 0.0f),
-	m_radius(50.0f)
+Bolt::Bolt(sf::Texture const & texture, sf::Vector2f pos):
+	m_texture(texture)
 {
-	m_ball.setPosition(m_position);
-	m_ball.setFillColor(sf::Color::Yellow);
-	m_ball.setRadius(m_radius);
+	initSprite(pos);
 }
 
-Bolt::Bolt(float r, sf::Vector2f p , sf::Vector2f s):
-	m_alive(true),
-	m_position(p),
-	m_speed(s),
-	m_radius(r)
+void Bolt::update(double dt)
 {
-	m_ball.setPosition(m_position);
-	m_ball.setFillColor(sf::Color::Yellow);
-	m_ball.setRadius(m_radius);
 }
 
-sf::Vector2f Bolt::getSpeed() const
+void Bolt::setPosition(sf::Vector2f const & pos)
 {
-	return m_speed;
+	initSprite(pos);
 }
 
-sf::Vector2f Bolt::getPosition() const
+void Bolt::render(sf::RenderWindow & window)
 {
-	return m_position;
+	window.draw(m_body);
+}
+
+void Bolt::initSprite(sf::Vector2f const & pos)
+{
+	m_body.setTexture(m_texture);
+	sf::IntRect bodyRect(0, 0, 110, 24);
+	m_body.setTextureRect(bodyRect);
+	m_body.setPosition(pos);
 }

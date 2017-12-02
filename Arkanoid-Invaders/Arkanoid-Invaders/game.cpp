@@ -1,39 +1,65 @@
 #include "Game.h"
 #include <iostream>
 
-
+static double const MS_PER_UPDATE = 10.0;
 
 Game::Game() :
 	m_window{ sf::VideoMode{ 800, 800, 32 }, "SFML Game" },
 	m_exitGame{ false }, //when true game will exit
-	m_bolt(5.0f, sf::Vector2f(500.f, 500.0f), sf::Vector2f(0.0f, 0.0f))
+	m_bolt(sf::Vector2f(500.f, 500.0f)),
+	m_paddle(m_texture,sf::Vector2f(0,0),m_keyHandler)
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
+
+	m_paddle.setPosition(sf::Vector2f(400.f, 750.f));
 	
 }
 
 
-Game::~Game()
+void Game::processEvents()
 {
+	sf::Event event;
+	while (m_window.pollEvent(event))
+	{
+		if (event.type == sf::Event::Closed)
+		{
+			m_window.close();
+		}
+		processGameEvents(event);
+	}
 }
-
 
 void Game::run()
 {	
-	sf::Event event;
+	sf::Clock clock;
+	double lag = 0;
+
 	while (m_window.isOpen())
 	{
-		processEvents(event);
+		sf::Time dt = clock.restart();
+
+		lag += dt.asMilliseconds();
+
+		processEvents();
+
+		while (lag > MS_PER_UPDATE)
+		{
+			update(MS_PER_UPDATE);
+			lag -= MS_PER_UPDATE;
+		}
+		update(MS_PER_UPDATE);
+
 		render();
 	}
 }
+
 /// <summary>
 /// handle user and system events/ input
 /// get key presses/ mouse moves etc. from OS
 /// and user :: Don't do game update here
 /// </summary>
-void Game::processEvents(sf::Event& event)
+void Game::processGameEvents(sf::Event& event)
 {
 	switch (event.type)
 	{
@@ -57,10 +83,6 @@ void Game::processEvents(sf::Event& event)
 	}
 }
 
-/// <summary>
-/// Update the game world
-/// </summary>
-/// <param name="t_deltaTime">time interval per frame</param>
 void Game::update(double dt)
 {
 	if (m_exitGame)
@@ -70,20 +92,16 @@ void Game::update(double dt)
 	m_paddle.update(dt);
 }
 
-/// <summary>
-/// draw the frame and then switch bufers
-/// </summary>
 void Game::render()
 {
 	m_window.clear();
-	m_window.draw(m_bolt.m_ball);
-	m_window.draw(m_paddle.m_body);
-	//m_window.draw(m_logoSprite);
+//	m_window.draw(m_sprite);
+	m_paddle.render(m_window);
 	m_window.display();
 }
 
 /// <summary>
-/// load the font and setup the text message for screen
+/// load the font and setup the text message
 /// </summary>
 void Game::setupFontAndText()
 {
@@ -103,15 +121,15 @@ void Game::setupFontAndText()
 }
 
 /// <summary>
-/// load the texture and setup the sprite for the logo
+/// load the texture and setup the sprite
 /// </summary>
 void Game::setupSprite()
 {
-	//if (!m_logoTexture.loadFromFile("ASSETS\\IMAGES\\SFML-LOGO.png"))
-	//{
-	//	// simple error message if previous call fails
-	//	std::cout << "problem loading logo" << std::endl;
-	//}
-	//m_logoSprite.setTexture(m_logoTexture);
-	//m_logoSprite.setPosition(300.0f, 180.0f);
+	if (!m_texture.loadFromFile("ASSETS\\IMAGES\\paddle.png"))
+	{
+		std::cout << "problem loading paddle texture" << std::endl;
+	}
+
+	m_sprite.setTexture(m_texture);
+	m_sprite.setPosition(300.0f, 180.0f);
 }

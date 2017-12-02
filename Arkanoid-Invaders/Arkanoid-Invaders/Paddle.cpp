@@ -1,43 +1,51 @@
 #include "Paddle.h"
 
 
-Paddle::Paddle() :
-	m_position(355.f,750.f),
-	m_speed(0.0f,0.0f),
-	m_width(100.f)
+Paddle::Paddle(sf::Texture const & texture, sf::Vector2f const & pos, KeyHandler const & keyHandler) :
+	m_texture(texture),
+	m_keys(&keyHandler)
 {
-	m_body.setPosition(m_position);
-	m_body.setFillColor(sf::Color::Red);
-	m_body.setSize(sf::Vector2f(100,10));
+	initSprite(pos);
 }
 
-float Paddle::getHeight() const
+void Paddle::setPosition(sf::Vector2f const & pos)
 {
-	return m_height;
+	initSprite(pos);
 }
 
-float Paddle::getWidth() const
+void Paddle::render(sf::RenderWindow & window)
 {
-	return m_width;
-}
-
-void Paddle::moveL()
-{
-	if (m_position.x != 0)
-	{
-		m_position -= m_speed;
-	}
-}
-
-void Paddle::moveR()
-{
-	if (m_position.x != 800 - getWidth())
-	{
-		m_position += m_speed;
-	}
+	window.draw(m_body);
 }
 
 void Paddle::update(double dt)
 {
-	m_body.setPosition(m_position);
+	handleKeyInput();
+	setPosition(sf::Vector2f(m_position.x, m_body.getPosition().y));
+}
+
+void Paddle::handleKeyInput()
+{
+	if (m_keys->isPressed(sf::Keyboard::Right))
+	{
+		if (m_position.x != 690.f)
+		{
+		m_position.x += m_speed;
+		}
+	}
+	if (m_keys->isPressed(sf::Keyboard::Left))
+	{
+		if (m_position.x != 0.f)
+		{
+		m_position.x -= m_speed;
+		}
+	}
+}
+
+void Paddle::initSprite(sf::Vector2f const & pos)
+{
+	m_body.setTexture(m_texture);
+	sf::IntRect bodyRect(0,0,110,24);
+	m_body.setTextureRect(bodyRect);
+	m_body.setPosition(pos);
 }

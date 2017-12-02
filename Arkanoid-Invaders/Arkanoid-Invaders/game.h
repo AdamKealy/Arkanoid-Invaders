@@ -1,4 +1,3 @@
-// author Peter Lowe
 #ifndef GAME
 #define GAME
 #include "Bolt.h"
@@ -8,15 +7,18 @@
 class Game
 {
 public:
-	Game();
-	~Game();
-	void run();
+
 	Paddle m_paddle;
 	Bolt m_bolt;
 	KeyHandler m_keyHandler;
-private:
 
-	void processEvents(sf::Event&);
+	Game();
+	void run();
+	
+
+private:
+	void processEvents();
+	void processGameEvents(sf::Event&);
 	void update(double dt);
 	void render();
 	void setupFontAndText();
@@ -24,11 +26,10 @@ private:
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
-	//sf::Texture m_logoTexture; // texture used for sfml logo
-	//sf::Sprite m_logoSprite; // sprite used for sfml logo
 	sf::Text m_text;
+	sf::Sprite m_sprite;
+	sf::Texture m_texture;
 	bool m_exitGame; // control exiting game
-
 };
 
 #endif // !GAME
