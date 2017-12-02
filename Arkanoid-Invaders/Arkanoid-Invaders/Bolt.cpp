@@ -1,13 +1,16 @@
 #include "Bolt.h"
 
-Bolt::Bolt(sf::Texture const & texture, sf::Vector2f pos):
-	m_texture(texture)
+Bolt::Bolt(sf::Texture const & texture, sf::Vector2f const & pos):
+	m_texture(texture),
+	m_position(pos)
 {
 	initSprite(pos);
 }
 
 void Bolt::update(double dt)
 {
+	m_position += m_speed;
+	setPosition(m_position);
 }
 
 void Bolt::setPosition(sf::Vector2f const & pos)
@@ -23,7 +26,7 @@ void Bolt::render(sf::RenderWindow & window)
 void Bolt::initSprite(sf::Vector2f const & pos)
 {
 	m_body.setTexture(m_texture);
-	sf::IntRect bodyRect(0, 0, 110, 24);
+	sf::IntRect bodyRect(0, 0, 24, 24);
 	m_body.setTextureRect(bodyRect);
 	m_body.setPosition(pos);
 }

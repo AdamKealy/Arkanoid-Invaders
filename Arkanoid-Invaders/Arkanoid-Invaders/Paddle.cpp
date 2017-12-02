@@ -3,7 +3,8 @@
 
 Paddle::Paddle(sf::Texture const & texture, sf::Vector2f const & pos, KeyHandler const & keyHandler) :
 	m_texture(texture),
-	m_keys(&keyHandler)
+	m_keys(&keyHandler),
+	m_position(pos)
 {
 	initSprite(pos);
 }

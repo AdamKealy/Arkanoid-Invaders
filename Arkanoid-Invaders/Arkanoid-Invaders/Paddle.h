@@ -19,7 +19,7 @@ private:
 	sf::Texture const & m_texture;
 	void initSprite(sf::Vector2f const & pos);
 	sf::Vector2f m_position;
-	float m_speed = 5.f;
+	float m_speed = 0.5f;
 	float m_width = { 150.f };
 	float const m_height = {10.0f};
 };

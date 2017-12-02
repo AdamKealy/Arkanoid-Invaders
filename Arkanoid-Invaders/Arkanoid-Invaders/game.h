@@ -27,8 +27,10 @@ private:
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
 	sf::Text m_text;
-	sf::Sprite m_sprite;
-	sf::Texture m_texture;
+	sf::Sprite m_paddleSprite;
+	sf::Texture m_paddleTexture;
+	sf::Sprite m_boltSprite;
+	sf::Texture m_boltTexture;
 	bool m_exitGame; // control exiting game
 };
 

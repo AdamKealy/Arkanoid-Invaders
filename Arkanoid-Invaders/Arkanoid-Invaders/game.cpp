@@ -6,13 +6,12 @@ static double const MS_PER_UPDATE = 10.0;
 Game::Game() :
 	m_window{ sf::VideoMode{ 800, 800, 32 }, "SFML Game" },
 	m_exitGame{ false }, //when true game will exit
-	m_bolt(sf::Vector2f(500.f, 500.0f)),
-	m_paddle(m_texture,sf::Vector2f(0,0),m_keyHandler)
+	m_bolt(m_boltTexture,sf::Vector2f(150.f, 600.f)),
+	m_paddle(m_paddleTexture,sf::Vector2f(360.f, 750.f),m_keyHandler)
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
-
-	m_paddle.setPosition(sf::Vector2f(400.f, 750.f));
+	m_window.setVerticalSyncEnabled(true);
 	
 }
 
@@ -90,13 +89,14 @@ void Game::update(double dt)
 		m_window.close();
 	}
 	m_paddle.update(dt);
+	m_bolt.update(dt);
 }
 
 void Game::render()
 {
 	m_window.clear();
-//	m_window.draw(m_sprite);
 	m_paddle.render(m_window);
+	m_bolt.render(m_window);
 	m_window.display();
 }
 
@@ -117,7 +117,6 @@ void Game::setupFontAndText()
 	m_text.setOutlineColor(sf::Color::Red);
 	m_text.setFillColor(sf::Color::Black);
 	m_text.setOutlineThickness(3.0f);
-
 }
 
 /// <summary>
@@ -125,11 +124,17 @@ void Game::setupFontAndText()
 /// </summary>
 void Game::setupSprite()
 {
-	if (!m_texture.loadFromFile("ASSETS\\IMAGES\\paddle.png"))
+	if (!m_paddleTexture.loadFromFile("ASSETS\\IMAGES\\paddle.png"))
 	{
 		std::cout << "problem loading paddle texture" << std::endl;
 	}
 
-	m_sprite.setTexture(m_texture);
-	m_sprite.setPosition(300.0f, 180.0f);
+	m_paddleSprite.setTexture(m_paddleTexture);
+
+	if (!m_boltTexture.loadFromFile("ASSETS\\IMAGES\\bolt.png"))
+	{
+		std::cout << "Problem loading bolt texture" << std::endl;
+	}
+
+	m_boltSprite.setTexture(m_boltTexture);
 }
