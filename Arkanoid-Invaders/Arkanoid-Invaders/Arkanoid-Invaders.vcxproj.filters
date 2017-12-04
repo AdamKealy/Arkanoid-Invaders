@@ -39,6 +39,9 @@
     <ClCompile Include="KeyHandler.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LevelLoader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -53,6 +56,9 @@
     <ClInclude Include="KeyHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="LevelLoader.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="..\..\..\..\..\pictures\SFML-LOGO.png">
@@ -63,5 +69,10 @@
     <Font Include="ASSETS\FONTS\ariblk.ttf">
       <Filter>Resource Files\ASSETS\FONTS</Filter>
     </Font>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ASSETS\LEVELS\level1.yaml">
+      <Filter>Resource Files\ASSETS</Filter>
+    </None>
   </ItemGroup>
 </Project>

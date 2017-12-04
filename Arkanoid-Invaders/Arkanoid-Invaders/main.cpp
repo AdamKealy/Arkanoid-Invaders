@@ -5,7 +5,7 @@
 /// @date May 21017
 /// </summary>
 
-#ifdef _DEBUG 
+#ifdef _DEBUG
 #pragma comment(lib,"sfml-graphics-d.lib") 
 #pragma comment(lib,"sfml-audio-d.lib") 
 #pragma comment(lib,"sfml-system-d.lib") 
@@ -18,7 +18,9 @@
 #pragma comment(lib,"sfml-window.lib") 
 #pragma comment(lib,"sfml-network.lib") 
 #endif 
-
+#pragma comment(lib,"libyaml-cppmdd") 
+#pragma comment(lib,"opengl32.lib") 
+#pragma comment(lib,"glu32.lib") 
 
 #include "Game.h"
 
