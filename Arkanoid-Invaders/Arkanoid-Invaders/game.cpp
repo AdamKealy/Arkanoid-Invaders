@@ -11,7 +11,7 @@ Game::Game() :
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
-	m_window.setVerticalSyncEnabled(true);
+	//m_window.setVerticalSyncEnabled(true);
 	
 }
 
@@ -95,6 +95,7 @@ void Game::update(double dt)
 void Game::render()
 {
 	m_window.clear();
+	m_window.draw(m_bgSprite);
 	m_paddle.render(m_window);
 	m_bolt.render(m_window);
 	m_window.display();
@@ -137,4 +138,10 @@ void Game::setupSprite()
 	}
 
 	m_boltSprite.setTexture(m_boltTexture);
+
+	if (!m_bgTexture.loadFromFile("ASSETS\\IMAGES\\background.png"))
+	{
+		std::cout << "Problem loading background" << std::endl;
+	}
+	m_bgSprite.setTexture(m_bgTexture);
 }

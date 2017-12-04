@@ -29,14 +29,14 @@ void Paddle::handleKeyInput()
 {
 	if (m_keys->isPressed(sf::Keyboard::Right))
 	{
-		if (m_position.x != 690.f)
+		if (m_position.x < 690.f)
 		{
 		m_position.x += m_speed;
 		}
 	}
 	if (m_keys->isPressed(sf::Keyboard::Left))
 	{
-		if (m_position.x != 0.f)
+		if (m_position.x > 0.f)
 		{
 		m_position.x -= m_speed;
 		}

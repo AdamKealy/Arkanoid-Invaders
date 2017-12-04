@@ -31,6 +31,8 @@ private:
 	sf::Texture m_paddleTexture;
 	sf::Sprite m_boltSprite;
 	sf::Texture m_boltTexture;
+	sf::Sprite m_bgSprite;
+	sf::Texture m_bgTexture;
 	bool m_exitGame; // control exiting game
 };
 
