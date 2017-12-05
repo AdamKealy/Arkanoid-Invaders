@@ -12,10 +12,10 @@ struct BrickData
 	sf::Vector2f m_position;
 };
 
-struct BackgroundData
-{
-	std::string m_fileName;
-};
+//struct BackgroundData
+//{
+//	std::string m_fileName;
+//};
 
 struct PaddleData
 {
@@ -29,7 +29,7 @@ struct BoltData
 
 struct LevelData
 {
-	BackgroundData m_background;
+//	BackgroundData m_background;
 	PaddleData m_paddle;
 	BoltData m_bolt;
 	std::vector<BrickData> m_bricks;

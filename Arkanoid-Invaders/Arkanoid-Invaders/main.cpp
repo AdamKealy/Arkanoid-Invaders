@@ -1,10 +1,3 @@
-/// <summary>
-/// simple game loop for SFML[2.4.2]
-/// 
-/// @author Peter Lowe
-/// @date May 21017
-/// </summary>
-
 #ifdef _DEBUG
 #pragma comment(lib,"sfml-graphics-d.lib") 
 #pragma comment(lib,"sfml-audio-d.lib") 

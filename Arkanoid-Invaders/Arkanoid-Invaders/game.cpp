@@ -4,7 +4,7 @@
 static double const MS_PER_UPDATE = 10.0;
 
 Game::Game() :
-	m_window{ sf::VideoMode{ 800, 800, 32 }, "SFML Game" },
+	m_window{ sf::VideoMode{ 800, 800, 32 }, "Spoder Game" },
 	m_exitGame{ false }, //when true game will exit
 	m_bolt(m_boltTexture,sf::Vector2f(150.f, 600.f)),
 	m_paddle(m_paddleTexture,sf::Vector2f(360.f, 750.f),m_keyHandler)
@@ -12,7 +12,15 @@ Game::Game() :
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
 	//m_window.setVerticalSyncEnabled(true);
-	
+
+	int currentLevel = 1;
+
+	if (!LevelLoader::load(currentLevel, m_level))
+	{
+		return;
+	}
+
+	generateBricks();
 }
 
 
@@ -97,6 +105,10 @@ void Game::render()
 	m_window.clear();
 	m_window.draw(m_bgSprite);
 	m_paddle.render(m_window);
+	for (const sf::Sprite & s : m_brickSprites)
+	{
+		m_window.draw(s);
+	}
 	m_bolt.render(m_window);
 	m_window.display();
 }
@@ -144,4 +156,23 @@ void Game::setupSprite()
 		std::cout << "Problem loading background" << std::endl;
 	}
 	m_bgSprite.setTexture(m_bgTexture);
+
+	if(!m_brickTexture.loadFromFile("ASSETS\\IMAGES\\brick1.png"))
+	{
+		std::cout << "Problem loading brick1.png" << std::endl;
+	}
+}
+
+void Game::generateBricks()
+{
+	sf::IntRect wallRect(0, 0, 42, 20);
+	for (BrickData const & bricks : m_level.m_bricks)
+	{
+		sf::Sprite sprite;
+		sprite.setTexture(m_brickTexture);
+		sprite.setTextureRect(wallRect);
+		sprite.setOrigin(wallRect.width / 2.f, wallRect.height / 2.f);
+		sprite.setPosition(bricks.m_position);
+		m_brickSprites.push_back(sprite);
+	}
 }

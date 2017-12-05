@@ -1,8 +1,10 @@
 #ifndef GAME
 #define GAME
+
 #include "Bolt.h"
 #include "Paddle.h"
 #include "KeyHandler.h"
+#include "LevelLoader.h"
 
 class Game
 {
@@ -11,6 +13,9 @@ public:
 	Paddle m_paddle;
 	Bolt m_bolt;
 	KeyHandler m_keyHandler;
+	LevelData m_level;
+
+
 
 	Game();
 	void run();
@@ -23,6 +28,7 @@ private:
 	void render();
 	void setupFontAndText();
 	void setupSprite();
+	void generateBricks();
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
@@ -33,6 +39,8 @@ private:
 	sf::Texture m_boltTexture;
 	sf::Sprite m_bgSprite;
 	sf::Texture m_bgTexture;
+	std::vector<sf::Sprite> m_brickSprites;
+	sf::Texture m_brickTexture;
 	bool m_exitGame; // control exiting game
 };
 

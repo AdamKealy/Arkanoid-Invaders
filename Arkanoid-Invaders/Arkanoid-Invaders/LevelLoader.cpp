@@ -1,16 +1,15 @@
 #include "LevelLoader.h"
 
-void operator >> (const YAML::Node& brickNode, BrickData& obstacle)
+void operator >> (const YAML::Node& brickNode, BrickData& brick)
 {
-	obstacle.m_position.x = brickNode["position"]["x"].as<float>();
-	obstacle.m_position.y = brickNode["position"]["y"].as<float>();
-	
+	brick.m_position.x = brickNode["position"]["x"].as<float>();
+	brick.m_position.y = brickNode["position"]["y"].as<float>();
 }
 
-void operator >> (const YAML::Node& backgroundNode, BackgroundData& background)
-{
-	background.m_fileName = backgroundNode["file"].as<std::string>();
-}
+//void operator >> (const YAML::Node& backgroundNode, BackgroundData& background)
+//{
+//	background.m_fileName = backgroundNode["file"].as<std::string>();
+//}
 
 void operator >> (const YAML::Node& paddleNode, PaddleData& paddle)
 {
@@ -26,23 +25,24 @@ void operator >> (const YAML::Node& boltNode, BoltData& bolt)
 
 void operator >> (const YAML::Node& levelNode, LevelData& level)
 {
-	levelNode["background"] >> level.m_background;
+//	levelNode["background"] >> level.m_background;
 
-	levelNode["tank"] >> level.m_paddle;
+	levelNode["paddle"] >> level.m_paddle;
+	levelNode["bolt"] >> level.m_bolt;
 
-	const YAML::Node& obstaclesNode = levelNode["obstacles"].as<YAML::Node>();
-	for (unsigned i = 0; i < obstaclesNode.size(); ++i)
+	const YAML::Node& brickNode = levelNode["bricks"].as<YAML::Node>();
+	for (unsigned i = 0; i < brickNode.size(); ++i)
 	{
-		BrickData obstacle;
-		obstaclesNode[i] >> obstacle;
-		level.m_bricks.push_back(obstacle);
+		BrickData brick;
+		brickNode[i] >> brick;
+		level.m_bricks.push_back(brick);
 	}
 }
 
 bool LevelLoader::load(int nr, LevelData& level)
 {
 	std::stringstream ss;
-	ss << "ASSETS\\LEVELS\\level";
+	ss << "./ASSETS/LEVELS/level";
 	ss << nr;
 	ss << ".yaml";
 
@@ -66,6 +66,5 @@ bool LevelLoader::load(int nr, LevelData& level)
 		std::cout << e.what() << "\n";
 		return false;
 	}
-
 	return true;
 }

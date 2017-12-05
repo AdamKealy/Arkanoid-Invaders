@@ -1,55 +1,73 @@
-background:
-   file:  
+#background:
+#file:  
 paddle:
    position: {x: 800, y: 100}
 bolt:
    position: {x: 400, y: 700}
 bricks: 
+   - position: {x: 100, y: 100}
+   - position: {x: 142, y: 100}
+   - position: {x: 184, y: 100}
+   - position: {x: 226, y: 100}
+   - position: {x: 268, y: 100}
+   - position: {x: 310, y: 100}
+   - position: {x: 352, y: 100}
+   - position: {x: 394, y: 100}
+   - position: {x: 436, y: 100}
+   - position: {x: 478, y: 100}
+   - position: {x: 520, y: 100}
+   - position: {x: 562, y: 100}
+   - position: {x: 604, y: 100}
+   - position: {x: 646, y: 100}
+   - position: {x: 688, y: 100}
 
-   - position: {x: 100, y: 660}
 
-   - position: {x: 134, y: 662}
+   - position: {x: 100, y: 200}
+   - position: {x: 142, y: 200}
+   - position: {x: 184, y: 200}
+   - position: {x: 226, y: 200}
+   - position: {x: 268, y: 200}
+   - position: {x: 310, y: 200}
+   - position: {x: 352, y: 200}
+   - position: {x: 394, y: 200}
+   - position: {x: 436, y: 200}
+   - position: {x: 478, y: 200}
+   - position: {x: 520, y: 200}
+   - position: {x: 562, y: 200}
+   - position: {x: 604, y: 200}
+   - position: {x: 646, y: 200}
+   - position: {x: 688, y: 200}
 
-   - position: {x: 167, y: 670}
 
-   - position: {x: 198, y: 685}
+   - position: {x: 100, y: 300}
+   - position: {x: 142, y: 300}
+   - position: {x: 184, y: 300}
+   - position: {x: 226, y: 300}
+   - position: {x: 268, y: 300}
+   - position: {x: 310, y: 300}
+   - position: {x: 352, y: 300}
+   - position: {x: 394, y: 300}
+   - position: {x: 436, y: 300}
+   - position: {x: 478, y: 300}
+   - position: {x: 520, y: 300}
+   - position: {x: 562, y: 300}
+   - position: {x: 604, y: 300}
+   - position: {x: 646, y: 300}
+   - position: {x: 688, y: 300}
 
-   - position: {x: 227, y: 704}
 
-   - position: {x: 251, y: 729}
-
-   - position: {x: 272, y: 757}
-
-   - position: {x: 1340, y: 240}
-
-   - position: {x: 1306, y: 238}
-
-   - position: {x: 1273, y: 230}
-
-   - position: {x: 1242, y: 215}
-
-   - position: {x: 1213, y: 196}
-
-   - position: {x: 1189, y: 171}
-
-   - position: {x: 1168, y: 143}
-
-   - position: {x: 400, y: 200}
-
-   - position: {x: 400, y: 233}
-
-   - position: {x: 400, y: 266}
-
-   - position: {x: 400, y: 299}
-
-   - position: {x: 400, y: 332}
-
-   - position: {x: 900, y: 632}
-
-   - position: {x: 933, y: 632}
-
-   - position: {x: 966, y: 632}
-
-   - position: {x: 999, y: 632}
-
-   - position: {x: 1032, y: 632}
+   - position: {x: 100, y: 400}
+   - position: {x: 142, y: 400}
+   - position: {x: 184, y: 400}
+   - position: {x: 226, y: 400}
+   - position: {x: 268, y: 400}
+   - position: {x: 310, y: 400}
+   - position: {x: 352, y: 400}
+   - position: {x: 394, y: 400}
+   - position: {x: 436, y: 400}
+   - position: {x: 478, y: 400}
+   - position: {x: 520, y: 400}
+   - position: {x: 562, y: 400}
+   - position: {x: 604, y: 400}
+   - position: {x: 646, y: 400}
+   - position: {x: 688, y: 400}
