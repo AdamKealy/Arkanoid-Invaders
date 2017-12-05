@@ -9,6 +9,12 @@
 
 struct BrickData
 {
+	int m_type;
+	sf::Vector2f m_position;
+};
+
+struct InvaderData
+{
 	sf::Vector2f m_position;
 };
 
@@ -32,6 +38,7 @@ struct LevelData
 //	BackgroundData m_background;
 	PaddleData m_paddle;
 	BoltData m_bolt;
+	std::vector<InvaderData> m_invaders;
 	std::vector<BrickData> m_bricks;
 };
 

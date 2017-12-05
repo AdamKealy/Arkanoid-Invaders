@@ -5,6 +5,7 @@
 #include "Paddle.h"
 #include "KeyHandler.h"
 #include "LevelLoader.h"
+#include "Invader.h"
 
 class Game
 {
@@ -14,8 +15,7 @@ public:
 	Bolt m_bolt;
 	KeyHandler m_keyHandler;
 	LevelData m_level;
-
-
+//	Invader m_invader;
 
 	Game();
 	void run();
@@ -40,7 +40,11 @@ private:
 	sf::Sprite m_bgSprite;
 	sf::Texture m_bgTexture;
 	std::vector<sf::Sprite> m_brickSprites;
-	sf::Texture m_brickTexture;
+	sf::Texture m_brickTexture1;
+	sf::Texture m_brickTexture2;
+	sf::Texture m_brickTexture3;
+	sf::Texture m_brickTexture4;
+	sf::Texture m_invaderTexture;
 	bool m_exitGame; // control exiting game
 };
 

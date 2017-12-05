@@ -2,6 +2,7 @@
 
 void operator >> (const YAML::Node& brickNode, BrickData& brick)
 {
+	brick.m_type = brickNode["type"].as<int>();
 	brick.m_position.x = brickNode["position"]["x"].as<float>();
 	brick.m_position.y = brickNode["position"]["y"].as<float>();
 }
@@ -10,6 +11,12 @@ void operator >> (const YAML::Node& brickNode, BrickData& brick)
 //{
 //	background.m_fileName = backgroundNode["file"].as<std::string>();
 //}
+
+void operator >> (const YAML::Node& invaderNode, InvaderData& invader)
+{
+	invader.m_position.x = invaderNode["position"]["x"].as<float>();
+	invader.m_position.y = invaderNode["position"]["y"].as<float>();
+}
 
 void operator >> (const YAML::Node& paddleNode, PaddleData& paddle)
 {
@@ -30,12 +37,19 @@ void operator >> (const YAML::Node& levelNode, LevelData& level)
 	levelNode["paddle"] >> level.m_paddle;
 	levelNode["bolt"] >> level.m_bolt;
 
+	const YAML::Node& invaderNode = levelNode["invaders"].as<YAML::Node>();
 	const YAML::Node& brickNode = levelNode["bricks"].as<YAML::Node>();
 	for (unsigned i = 0; i < brickNode.size(); ++i)
 	{
 		BrickData brick;
 		brickNode[i] >> brick;
 		level.m_bricks.push_back(brick);
+	}
+	for (unsigned i = 0; i < invaderNode.size(); ++i)
+	{
+		InvaderData invader;
+		invaderNode[i] >> invader;
+		level.m_invaders.push_back(invader);
 	}
 }
 

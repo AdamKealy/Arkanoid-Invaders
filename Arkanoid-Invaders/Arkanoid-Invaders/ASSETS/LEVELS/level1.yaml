@@ -6,68 +6,157 @@ bolt:
    position: {x: 400, y: 700}
 bricks: 
    - position: {x: 100, y: 100}
+     type: 0
    - position: {x: 142, y: 100}
+     type: 0
    - position: {x: 184, y: 100}
+     type: 0
    - position: {x: 226, y: 100}
+     type: 0
    - position: {x: 268, y: 100}
+     type: 0
    - position: {x: 310, y: 100}
+     type: 0
    - position: {x: 352, y: 100}
+     type: 0
    - position: {x: 394, y: 100}
+     type: 0
    - position: {x: 436, y: 100}
+     type: 0
    - position: {x: 478, y: 100}
+     type: 0
    - position: {x: 520, y: 100}
+     type: 0
    - position: {x: 562, y: 100}
+     type: 0
    - position: {x: 604, y: 100}
+     type: 0
    - position: {x: 646, y: 100}
+     type: 0
    - position: {x: 688, y: 100}
+     type: 0
 
 
    - position: {x: 100, y: 200}
+     type: 1
    - position: {x: 142, y: 200}
+     type: 1
    - position: {x: 184, y: 200}
+     type: 1
    - position: {x: 226, y: 200}
+     type: 1
    - position: {x: 268, y: 200}
+     type: 1
    - position: {x: 310, y: 200}
+     type: 1
    - position: {x: 352, y: 200}
+     type: 1
    - position: {x: 394, y: 200}
+     type: 1
    - position: {x: 436, y: 200}
+     type: 1
    - position: {x: 478, y: 200}
+     type: 1
    - position: {x: 520, y: 200}
+     type: 1
    - position: {x: 562, y: 200}
+     type: 1
    - position: {x: 604, y: 200}
+     type: 1
    - position: {x: 646, y: 200}
+     type: 1
    - position: {x: 688, y: 200}
+     type: 1
 
 
    - position: {x: 100, y: 300}
+     type: 2
    - position: {x: 142, y: 300}
+     type: 2
    - position: {x: 184, y: 300}
+     type: 2
    - position: {x: 226, y: 300}
+     type: 2
    - position: {x: 268, y: 300}
+     type: 2
    - position: {x: 310, y: 300}
+     type: 2
    - position: {x: 352, y: 300}
+     type: 2
    - position: {x: 394, y: 300}
+     type: 2
    - position: {x: 436, y: 300}
+     type: 2
    - position: {x: 478, y: 300}
+     type: 2
    - position: {x: 520, y: 300}
+     type: 2
    - position: {x: 562, y: 300}
+     type: 2
    - position: {x: 604, y: 300}
+     type: 2
    - position: {x: 646, y: 300}
+     type: 2
    - position: {x: 688, y: 300}
+     type: 2
 
 
    - position: {x: 100, y: 400}
+     type: 3
    - position: {x: 142, y: 400}
+     type: 3
    - position: {x: 184, y: 400}
+     type: 3
    - position: {x: 226, y: 400}
+     type: 3
    - position: {x: 268, y: 400}
+     type: 3
    - position: {x: 310, y: 400}
+     type: 3
    - position: {x: 352, y: 400}
+     type: 3
    - position: {x: 394, y: 400}
+     type: 3
    - position: {x: 436, y: 400}
+     type: 3
    - position: {x: 478, y: 400}
+     type: 3
    - position: {x: 520, y: 400}
+     type: 3
    - position: {x: 562, y: 400}
+     type: 3
    - position: {x: 604, y: 400}
+     type: 3
    - position: {x: 646, y: 400}
+     type: 3
    - position: {x: 688, y: 400}
+     type: 3
+
+invaders:
+   - position: {x: 150, y: 50}
+   - position: {x: 250, y: 50}
+   - position: {x: 350, y: 50}
+   - position: {x: 450, y: 50}
+   - position: {x: 550, y: 50}
+   - position: {x: 650, y: 50}
+
+   - position: {x: 150, y: 150}
+   - position: {x: 250, y: 150}
+   - position: {x: 350, y: 150}
+   - position: {x: 450, y: 150}
+   - position: {x: 550, y: 150}
+   - position: {x: 650, y: 150}
+
+   - position: {x: 150, y: 250}
+   - position: {x: 250, y: 250}
+   - position: {x: 350, y: 250}
+   - position: {x: 450, y: 250}
+   - position: {x: 550, y: 250}
+   - position: {x: 650, y: 250}
+
+   - position: {x: 150, y: 350}
+   - position: {x: 250, y: 350}
+   - position: {x: 350, y: 350}
+   - position: {x: 450, y: 350}
+   - position: {x: 550, y: 350}
+   - position: {x: 650, y: 350}

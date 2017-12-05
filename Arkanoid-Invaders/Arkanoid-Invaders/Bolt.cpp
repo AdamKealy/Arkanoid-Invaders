@@ -10,6 +10,7 @@ Bolt::Bolt(sf::Texture const & texture, sf::Vector2f const & pos):
 void Bolt::update(double dt)
 {
 	m_position += m_speed;
+	deflect();
 	setPosition(m_position);
 }
 
@@ -25,11 +26,11 @@ void Bolt::render(sf::RenderWindow & window)
 
 void Bolt::deflect()
 {
-	if (m_position.x == 0 || m_position.x == 800)
+	if (m_position.x == 0 || m_position.x == 790)
 	{
 		m_speed.x = (m_speed.x * -1.f);
 	}
-	if (m_position.y == 0 || m_position.y == 500)
+	if (m_position.y == 0 || m_position.y == 770)
 	{
 		m_speed.y = (m_speed.y * -1.f);
 	}

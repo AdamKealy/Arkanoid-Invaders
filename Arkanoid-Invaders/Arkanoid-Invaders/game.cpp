@@ -8,6 +8,7 @@ Game::Game() :
 	m_exitGame{ false }, //when true game will exit
 	m_bolt(m_boltTexture,sf::Vector2f(150.f, 600.f)),
 	m_paddle(m_paddleTexture,sf::Vector2f(360.f, 750.f),m_keyHandler)
+//	m_invader(m_invader,)
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
@@ -157,22 +158,66 @@ void Game::setupSprite()
 	}
 	m_bgSprite.setTexture(m_bgTexture);
 
-	if(!m_brickTexture.loadFromFile("ASSETS\\IMAGES\\brick1.png"))
+	if(!m_brickTexture1.loadFromFile("ASSETS\\IMAGES\\brick1.png"))
 	{
 		std::cout << "Problem loading brick1.png" << std::endl;
 	}
+	if (!m_brickTexture2.loadFromFile("ASSETS\\IMAGES\\brick2.png"))
+	{
+		std::cout << "Problem loading brick2.png" << std::endl;
+	}
+	if (!m_brickTexture3.loadFromFile("ASSETS\\IMAGES\\brick3.png"))
+	{
+		std::cout << "Problem loading brick3.png" << std::endl;
+	}
+	if (!m_brickTexture4.loadFromFile("ASSETS\\IMAGES\\brick4.png"))
+	{
+		std::cout << "Problem loading brick4.png" << std::endl;
+	}
+	if (!m_invaderTexture.loadFromFile("ASSETS\\IMAGES\\invader.png"))
+	{
+		std::cout << "Problem loading invader" << std::endl;
+	}
+
 }
 
 void Game::generateBricks()
 {
-	sf::IntRect wallRect(0, 0, 42, 20);
+	sf::IntRect brickRect(0, 0, 42, 20);
 	for (BrickData const & bricks : m_level.m_bricks)
 	{
 		sf::Sprite sprite;
-		sprite.setTexture(m_brickTexture);
-		sprite.setTextureRect(wallRect);
-		sprite.setOrigin(wallRect.width / 2.f, wallRect.height / 2.f);
+		if (bricks.m_type == 0)
+		{
+			sprite.setTexture(m_brickTexture1);
+		}
+		if (bricks.m_type == 1)
+		{
+			sprite.setTexture(m_brickTexture2);
+		}
+		if (bricks.m_type == 2)
+		{
+			sprite.setTexture(m_brickTexture3);
+		}
+		if (bricks.m_type == 3)
+		{
+			sprite.setTexture(m_brickTexture4);
+		}
+		sprite.setTextureRect(brickRect);
+		sprite.setOrigin(brickRect.width / 2.f, brickRect.height / 2.f);
 		sprite.setPosition(bricks.m_position);
+		m_brickSprites.push_back(sprite);
+	}
+
+	sf::IntRect invaderRect(0, 0, 59, 50);
+	for (InvaderData const & invader : m_level.m_invaders)
+	{
+		sf::Sprite sprite;
+		
+		sprite.setTexture(m_invaderTexture);
+		sprite.setTextureRect(invaderRect);
+		sprite.setOrigin(invaderRect.width / 2.f, invaderRect.height / 2.f);
+		sprite.setPosition(invader.m_position);
 		m_brickSprites.push_back(sprite);
 	}
 }
