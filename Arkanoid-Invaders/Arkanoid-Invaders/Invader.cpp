@@ -4,33 +4,11 @@ Invader::Invader(sf::Texture const & texture, LevelData const & levelLoader) :
 	m_texture(texture),
 	m_levels(&levelLoader)
 {
-	setUpsprites();
 }
 
 void Invader::update(double dt)
 {
 	moveCheck();
-
-	if (!m_movingRight)
-	{
-		for (InvaderData const &invader : m_levels->m_invaders)
-		{
-			float pos = invader.m_position.x;
-			pos++;
-			m_position.x = pos;
-		}
-	
-	}
-	else
-	{
-		for (InvaderData const &invader : m_levels->m_invaders)
-		{
-			float pos = invader.m_position.x;
-			pos--;
-			m_position.x = pos;
-		}
-
-	}
 	setPosition(m_position);
 }
 
@@ -41,16 +19,15 @@ void Invader::setPosition(sf::Vector2f const & pos)
 
 void Invader::render(sf::RenderWindow & window)
 {
-	for (const sf::Sprite & s : m_Sprites)
+	for (const auto & m_ptrSprites : m_Sprites)
 	{
-	window.draw(s);
+		window.draw(m_ptrSprites);
 	}
 }
 
 void Invader::moveCheck()
 {
-	for (int i = 0; i < 24; i++)
-	{
+	
 		if (m_position.x == 0.f)
 		{
 			m_movingRight = true;
@@ -59,18 +36,23 @@ void Invader::moveCheck()
 		{
 			m_movingRight = false;
 		}
-	}
+	
 }
 
 void Invader::initSprite(sf::Vector2f const & pos)
 {
-	m_Sprites.setPosition(pos);
+	for (InvaderData const & invader : m_levels->m_invaders)
+	{
+		sf::Sprite sprite;
+		sprite.setPosition(pos);
+	//	m_Sprites.push_back(sprite);
+	}
 }
 
-void Invader::setUpsprites()
+void Invader::setUpsprites(LevelData const  &t_levels)
 {
 	sf::IntRect invaderRect(0, 0, 59, 50);
-	for (InvaderData const & invader : m_levels->m_invaders)
+	for (InvaderData const & invader : t_levels.m_invaders)
 	{
 		sf::Sprite sprite;
 

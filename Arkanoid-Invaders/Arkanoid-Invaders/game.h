@@ -47,6 +47,8 @@ private:
 	sf::Texture m_brickTexture4;
 	sf::Texture m_invaderTexture;
 	bool m_exitGame; // control exiting game
+
+	sf::Vector2f positions[24];
 };
 
 #endif // !GAME

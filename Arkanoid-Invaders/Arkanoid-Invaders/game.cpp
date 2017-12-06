@@ -12,7 +12,7 @@ Game::Game() :
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
-	//m_window.setVerticalSyncEnabled(true);
+	m_window.setVerticalSyncEnabled(true);
 
 	int currentLevel = 1;
 
@@ -20,6 +20,7 @@ Game::Game() :
 	{
 		return;
 	}
+	m_invader.setUpsprites(m_level);
 
 	generateEnemies();
 }
@@ -100,6 +101,10 @@ void Game::update(double dt)
 	m_paddle.update(dt);
 	m_bolt.update(dt);
 	m_invader.update(dt);
+	for (int i = 0; i < 24; i++)
+	{
+		positions[i].x++;
+	}
 }
 
 void Game::render()
@@ -111,10 +116,10 @@ void Game::render()
 	//{
 	//	m_window.draw(s);
 	//}
-/*	for (const sf::Sprite & s : m_invaderSprites)
-	{
-		m_window.draw(s);
-	}*/
+	//for (const sf::Sprite & s : m_invaderSprites)
+	//{
+	//	m_window.draw(s);
+	//}
 	m_invader.render(m_window);
 	m_bolt.render(m_window);
 	m_window.display();
@@ -215,15 +220,19 @@ void Game::generateEnemies()
 		m_brickSprites.push_back(sprite);
 	}
 
-	sf::IntRect invaderRect(0, 0, 59, 50);
-	for (InvaderData const & invader : m_level.m_invaders)
-	{
-		sf::Sprite sprite;
-		
-		sprite.setTexture(m_invaderTexture);
-		sprite.setTextureRect(invaderRect);
-		sprite.setOrigin(invaderRect.width / 2.f, invaderRect.height / 2.f);
-		sprite.setPosition(invader.m_position);
-		m_invaderSprites.push_back(sprite);
-	}
+	//sf::IntRect invaderRect(0, 0, 59, 50);
+	//for (InvaderData const & invader : m_level.m_invaders)
+	//{
+	//	int i = 0;
+	//	sf::Sprite sprite;
+	//	
+	//	sprite.setTexture(m_invaderTexture);
+	//	sprite.setTextureRect(invaderRect);
+	//	sprite.setOrigin(invaderRect.width / 2.f, invaderRect.height / 2.f);
+	//	sprite.setPosition(invader.m_position);
+	//	positions[i] = invader.m_position;
+	//	m_invaderSprites.push_back(sprite);
+
+	//	i++;
+	//}
 }
