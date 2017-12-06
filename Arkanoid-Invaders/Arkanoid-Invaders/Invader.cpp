@@ -64,7 +64,7 @@ void Invader::moveCheck()
 
 void Invader::initSprite(sf::Vector2f const & pos)
 {
-	//m_Sprites.setPosition(pos);
+	m_Sprites.setPosition(pos);
 }
 
 void Invader::setUpsprites()
