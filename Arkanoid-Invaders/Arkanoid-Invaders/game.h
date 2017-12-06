@@ -15,7 +15,7 @@ public:
 	Bolt m_bolt;
 	KeyHandler m_keyHandler;
 	LevelData m_level;
-//	Invader m_invader;
+	Invader m_invader;
 
 	Game();
 	void run();
@@ -28,7 +28,7 @@ private:
 	void render();
 	void setupFontAndText();
 	void setupSprite();
-	void generateBricks();
+	void generateEnemies();
 
 	sf::RenderWindow m_window; // main SFML window
 	sf::Font m_ArialBlackfont; // font used by message
@@ -40,6 +40,7 @@ private:
 	sf::Sprite m_bgSprite;
 	sf::Texture m_bgTexture;
 	std::vector<sf::Sprite> m_brickSprites;
+	std::vector<sf::Sprite> m_invaderSprites;
 	sf::Texture m_brickTexture1;
 	sf::Texture m_brickTexture2;
 	sf::Texture m_brickTexture3;

@@ -7,8 +7,8 @@ Game::Game() :
 	m_window{ sf::VideoMode{ 800, 800, 32 }, "Spoder Game" },
 	m_exitGame{ false }, //when true game will exit
 	m_bolt(m_boltTexture,sf::Vector2f(150.f, 600.f)),
-	m_paddle(m_paddleTexture,sf::Vector2f(360.f, 750.f),m_keyHandler)
-//	m_invader(m_invader,)
+	m_paddle(m_paddleTexture,sf::Vector2f(360.f, 750.f), m_keyHandler),
+	m_invader(m_invaderTexture, m_level)
 {
 	setupFontAndText(); // load font 
 	setupSprite(); // load texture
@@ -21,7 +21,7 @@ Game::Game() :
 		return;
 	}
 
-	generateBricks();
+	generateEnemies();
 }
 
 
@@ -99,6 +99,7 @@ void Game::update(double dt)
 	}
 	m_paddle.update(dt);
 	m_bolt.update(dt);
+	m_invader.update(dt);
 }
 
 void Game::render()
@@ -106,10 +107,15 @@ void Game::render()
 	m_window.clear();
 	m_window.draw(m_bgSprite);
 	m_paddle.render(m_window);
-	for (const sf::Sprite & s : m_brickSprites)
+	//for (const sf::Sprite & s : m_brickSprites)
+	//{
+	//	m_window.draw(s);
+	//}
+/*	for (const sf::Sprite & s : m_invaderSprites)
 	{
 		m_window.draw(s);
-	}
+	}*/
+	m_invader.render(m_window);
 	m_bolt.render(m_window);
 	m_window.display();
 }
@@ -181,7 +187,7 @@ void Game::setupSprite()
 
 }
 
-void Game::generateBricks()
+void Game::generateEnemies()
 {
 	sf::IntRect brickRect(0, 0, 42, 20);
 	for (BrickData const & bricks : m_level.m_bricks)
@@ -218,6 +224,6 @@ void Game::generateBricks()
 		sprite.setTextureRect(invaderRect);
 		sprite.setOrigin(invaderRect.width / 2.f, invaderRect.height / 2.f);
 		sprite.setPosition(invader.m_position);
-		m_brickSprites.push_back(sprite);
+		m_invaderSprites.push_back(sprite);
 	}
 }
